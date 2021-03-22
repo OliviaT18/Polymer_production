@@ -20,7 +20,7 @@
 # radicals/MGy = moles \times 6.023e23
 # \end{aligned}
 
-# In[45]:
+# In[5]:
 
 
 def moles_per_MGy(G_value):
@@ -31,7 +31,7 @@ def moles_per_MGy(G_value):
     return(moles_per_MGy)
 
 
-# In[46]:
+# In[6]:
 
 
 def radicals_per_dose(moles):
@@ -41,7 +41,7 @@ def radicals_per_dose(moles):
     return(rads_per_dose)
 
 
-# In[47]:
+# In[7]:
 
 
 moles = moles_per_MGy(0.66e-6)
@@ -61,7 +61,7 @@ print (radicals_per_dose(moles), 'radicals/g.MGy')
 # Vol_H = Vol_{STP} \times \ Vol_{CH4} \times SG \times D
 # \end{aligned}
 
-# In[48]:
+# In[8]:
 
 
 def vol_of_H_a (moles, CH4_vol, dose, SG):
@@ -73,7 +73,7 @@ def vol_of_H_a (moles, CH4_vol, dose, SG):
     return(h_produced)
 
 
-# In[49]:
+# In[9]:
 
 
 print(vol_of_H_a(moles, 400, 0.01, 0.43), 'cm3/s')
@@ -94,7 +94,7 @@ print(vol_of_H_a(moles, 400, 0.01, 0.43), 'cm3/s')
 # \end{aligned}
 # 
 
-# In[50]:
+# In[10]:
 
 
 def g_val_conversion(G_value):
@@ -105,14 +105,14 @@ def g_val_conversion(G_value):
     
 
 
-# In[51]:
+# In[11]:
 
 
 new_g_val = g_val_conversion(0.66e-6)
 print(new_g_val, 'molecules/MeV')
 
 
-# In[52]:
+# In[12]:
 
 
 def dose_rate_conversion(dose, mass_CH4):
@@ -122,14 +122,14 @@ def dose_rate_conversion(dose, mass_CH4):
     return(new_dose_rate)
 
 
-# In[53]:
+# In[13]:
 
 
 new_dose_rate = dose_rate_conversion(0.01, 0.1696)
 print(new_dose_rate, 'MeV/s')
 
 
-# In[54]:
+# In[14]:
 
 
 def vol_of_H_b(new_dose, new_g_value):
@@ -139,17 +139,42 @@ def vol_of_H_b(new_dose, new_g_value):
     return(h_production)
 
 
-# In[55]:
+# In[15]:
 
 
 print(vol_of_H_b(new_dose_rate, new_g_val), 'cm3/s')
+
+
+# ### Molecular weight of polymer
+# * polymer (-CH2-)n - n value of polymer is difficult to quantify but thought to be no greater than 20 in the case of the methane moderator
+# * assumption in the Evans paper that the max chain length of 20 is all that is formed so the 0.11g/s is the absolute maximum - so there might be x amount of ethane x amount of butane etc etc, need to account for this - however the equation doesnt take into account the mass of each polymer chain only the Mr so im not sure
+# * the g value doesnt change though just the mr - this is what Steve was talking about i think - so maybe do all of the mrs from n=1 - 20 (think the Mr here is a bit off though as doesnt account for end CH3s), then do you add them up?? what would this actually mean?? - i think this maths is assuming that every polymer formed is the same chain length which is not correct (i dont think) so wed need to split the maths to isolate an amount of polymer so we can take into account the distribution or something along those lines (idk how)
+# * need to look into which chain lengths are most probable and what the distribution of them would be 
+
+# In[16]:
+
+
+def molecular_weight(n):
+    
+    mr = (12 + 2) * n 
+    
+    return (mr)
+
+
+# In[17]:
+
+
+Mr_20 = molecular_weight(20)
+print(Mr_20)
+
+#why in the paper is this taken as approx 300? Also this is not accounting for CH3 on the end just the central CH2s
+# if taking in to account the end C having 3 Hs the Mr is still only 282 not 300 - seems a bit far to round
 
 
 # ### Rate of polymer formation
 # * assuming unit density
 # * dose in MGy/s
 # * mr is molecular weight
-# * polymer (-CH2-)n - n value of polymer is difficult to quantify but thought to be no greater than 20 in the case of the methane moderator
 
 # \begin{aligned}
 # polymer/MGy = moles/MGy \times Mr \\ \\ 
@@ -157,7 +182,7 @@ print(vol_of_H_b(new_dose_rate, new_g_val), 'cm3/s')
 # \end{aligned}
 # 
 
-# In[56]:
+# In[18]:
 
 
 def rate_of_pol_form(G_value, mr, dose, mass_CH4):
@@ -169,8 +194,8 @@ def rate_of_pol_form(G_value, mr, dose, mass_CH4):
     return(polymer_per_sec)    
 
 
-# In[57]:
+# In[19]:
 
 
-print(rate_of_pol_form(0.22e-6, 300, 0.01, 169.6), 'g polymer/s')
+print(rate_of_pol_form(0.22e-6, Mr_20, 0.01, 169.6), 'g polymer/s')
 
