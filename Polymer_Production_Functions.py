@@ -1,3 +1,13 @@
+#Functions for the production of hydrogen gas and polymer mix in the liquid CH4 moderators
+import pandas as pd
+
+def Mod_Data_Reader(path):
+    
+    df = pd.read_csv(path)
+    df.drop(['Unnamed: 0'], axis = 1, inplace = True)
+    
+    return(df)
+
 
 def moles_per_MGy_per_g(G_value):
     '''
