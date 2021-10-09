@@ -18,3 +18,6 @@ As seen in the data as well as 'TS1_Current_Moderator_Final_Split.ipynb'', the m
 - 'Polymer_Production_Functions.py' - Once I understood the maths I wrote a python script containing all the functions I would use in the models.
 - 'TS1_Current_Moderator_First_Split.ipynb' - This is the first run of my model. The moderator was split into 6 sections.
 - 'TS1_Current_Moderator_Final_Split.ipynb' - The results came from the final run of the model using the data from the MCNP simulation in 'Data_for_OT' where the moderator was split into 48 sections and dwell times were applied. 
+
+
+**Evans, D. 1995.** Irradiation effects in liquid methane used as a neutron moderator. Cryogenics, 35(11), pp.763-766.
