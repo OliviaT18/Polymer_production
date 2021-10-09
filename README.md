@@ -3,7 +3,7 @@
 
 ### This was the project which I completed whilst on a placement year as a part of the Neutronics Group at the ISIS Neutron and Muon source in 2020/21.
 
-It was found that during operation, the TS1 liquid methane moderator was deteriorating due to a build up of a tar-like polymer as well as the presense of gaseous hydrogen. The build up of these defects was due to radiolysis of the liquid methane which resulted in chain reactions and subsequently the creation of the polymer mixture.
+It was found that during operation, the TS1 liquid methane moderator was deteriorating due to a build up of a tar-like polymer as well as the presence of gaseous hydrogen. The build up of these defects was due to radiolysis of the liquid methane which resulted in chain reactions and subsequently the creation of the polymer mixture.
 
 My task was to model the build up of the polymer and hydrogen in order to give a better understanding of the lifetime of the liquid methane moderator.
 The basis of this work was an expansion of the model from a paper by David Evans. The paper used estimated data to calculate a approximate values for the hydrogen gas and polymer production rate. 
